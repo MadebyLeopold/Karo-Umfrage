@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Logs - Schul-Umfragen</title>
+    <link rel="stylesheet" href="../../assets/css/admin-style.css">
+    <link rel="stylesheet" href="../../assets/css/logs-style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>System Logs</h1>
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="admin-logs.html" class="active">Logs</a>
+                <button onclick="logout()" class="logout-btn">Ausloggen</button>
+            </nav>
+        </header>
+
+        <main id="mainContent">
+            <div id="messageContainer"></div>
+            
+            <!-- Logs Filter Section -->
+            <div class="logs-controls">
+                <div class="filter-group">
+                    <select id="logType" class="select-filter">
+                        <option value="all">Alle Aktivitäten</option>
+                        <option value="auth">Authentifizierung</option>
+                        <option value="survey">Umfragen</option>
+                        <option value="votes">Abstimmungen</option>
+                        <option value="system">System</option>
+                    </select>
+                    <input type="date" id="dateFilter" class="date-filter">
+                    <button id="clearFilters" class="secondary-btn">Filter zurücksetzen</button>
+                </div>
+                <button id="refreshLogs" class="primary-btn">Aktualisieren</button>
+            </div>
+
+            <!-- Logs Table -->
+            <div class="logs-container">
+                <table id="logsTable" class="logs-table">
+                    <thead>
+                        <tr>
+                            <th>Zeitstempel</th>
+                            <th>Typ</th>
+                            <th>Beschreibung</th>
+                            <th>IP-Adresse</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logsBody">
+                        <!-- Will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button id="prevPage" class="page-btn">&laquo; Zurück</button>
+                <span id="pageInfo">Seite 1 von 1</span>
+                <button id="nextPage" class="page-btn">Weiter &raquo;</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/logs-manager.js"></script>
+</body>
+</html>

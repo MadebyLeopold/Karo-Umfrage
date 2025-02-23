@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Schul-Umfragen</title>
+    <link rel="stylesheet" href="../../assets/css/login-style.css">
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginForm" class="container" method="POST">
+            <h2>Login</h2>
+            <select id="userType" name="userType" required>
+                <option value="student">Schüler</option>
+                <option value="teacher">Lehrer</option>
+            </select>
+            <input type="password" id="password" name="password" required placeholder="Passwort">
+            <button type="submit">Einloggen</button>
+            <div id="errorMessage" class="error"></div>
+        </form>
+    </div>
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Schul-Umfragen</title>
+    <link rel="stylesheet" href="/frontend/assets/css/admin-style.css">
+</head>
+<body>
+    <div class="admin-login-container">
+        <form id="adminLoginForm" class="container">
+            <h2>Administrator Login</h2>
+            <div class="input-group">
+                <input type="text" id="username" name="username" required placeholder="Benutzername">
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" required placeholder="Passwort">
+            </div>
+            <button type="submit">Einloggen</button>
+            <a href="/frontend/pages/user/login.html" class="user-login-btn">Zum Benutzer-Login</a>
+            <div id="errorMessage" class="error"></div>
+        </form>
+    </div>
+    <script src="/frontend/assets/js/api.js"></script>
+    <script src="/frontend/assets/js/admin-login.js"></script>
+</body>
+</html>

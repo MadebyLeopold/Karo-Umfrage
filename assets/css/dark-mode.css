@@ -1,0 +1,77 @@
+.dark-mode {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --border-color: #404040;
+    --hover-color: #3a3a3a;
+}
+
+.dark-mode body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.dark-mode .container {
+    background-color: var(--bg-primary);
+}
+
+.dark-mode header {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.dark-mode .logout-btn {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.dark-mode .logout-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.dark-mode .survey-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .survey-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode #userTypeDisplay {
+    color: var(--text-secondary);
+}
+
+.dark-mode .surveys-grid {
+    gap: 20px;
+}
+
+.dark-mode h1, 
+.dark-mode h2, 
+.dark-mode h3 {
+    color: var(--text-primary);
+}
+
+.dark-mode p {
+    color: var(--text-secondary);
+}
+
+/* For scrollbars in modern browsers */
+.dark-mode ::-webkit-scrollbar {
+    width: 12px;
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 6px;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-color);
+}
