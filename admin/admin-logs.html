@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de" class="dark-mode" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Logs - Schul-Umfragen</title>
+    <link rel="stylesheet" href="../../assets/css/admin-style.css">
+    <link rel="stylesheet" href="../../assets/css/logs-style.css">
+    <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>System Logs</h1>
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="admin-logs.html" class="active">Logs</a>
+                <div class="header-controls">
+                    <button onclick="toggleDarkMode()" class="theme-toggle-btn" aria-label="Theme umschalten">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button onclick="logout()" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Ausloggen
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <main id="mainContent">
+            <div id="messageContainer"></div>
+            
+            <!-- Logs Filter Section -->
+            <div class="logs-controls">
+                <div class="filters-group">
+                    <select id="logSource" class="select-filter">
+                        <option value="activity">Aktivitätslogs</option>
+                        <option value="error">Fehlerlogs</option>
+                        <option value="php">PHP Logs</option>
+                    </select>
+                    <select id="logType" class="select-filter">
+                        <option value="all">Alle Typen</option>
+                        <option value="auth">Auth</option>
+                        <option value="survey">Umfrage</option>
+                        <option value="votes">Abstimmung</option>
+                        <option value="system">System</option>
+                    </select>
+                    <input type="date" id="dateFilter" class="date-filter">
+                    <select id="severityFilter" class="select-filter" style="display: none;">
+                        <option value="all">Alle Schweregrade</option>
+                        <option value="error">Error</option>
+                        <option value="warning">Warning</option>
+                        <option value="notice">Notice</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button id="clearFilters" class="filter-btn">
+                        <i class="fas fa-times"></i> Filter zurücksetzen
+                    </button>
+                    <button id="refreshLogs" class="refresh-btn">
+                        <i class="fas fa-sync-alt"></i> Aktualisieren
+                    </button>
+                </div>
+            </div>
+
+            <!-- Logs Table -->
+            <div class="logs-container">
+                <table id="logsTable" class="logs-table">
+                    <thead>
+                        <tr>
+                            <!-- Headers will be dynamically updated -->
+                        </tr>
+                    </thead>
+                    <tbody id="logsBody">
+                        <!-- Logs will be dynamically loaded -->
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button id="prevPage" class="page-btn">Vorherige</button>
+                    <span id="pageInfo"></span>
+                    <button id="nextPage" class="page-btn">Nächste</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../assets/js/dark-mode.js"></script>
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/logs-manager.js"></script>
+</body>
+</html>

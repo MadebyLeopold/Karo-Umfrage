@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Schul-Umfragen</title>
+    <link rel="stylesheet" href="../assets/css/admin-style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <button onclick="showSection('pending')">Ausstehende Umfragen</button>
+                <button onclick="showSection('active')">Aktive Umfragen</button>
+                <button onclick="showSection('completed')">Abgeschlossene Umfragen</button>
+                <button onclick="logout()" class="logout-btn">Ausloggen</button>
+            </nav>
+        </header>
+
+        <main>
+            <section id="pending-surveys" class="survey-section">
+                <h2>Ausstehende Umfragen</h2>
+                <div class="surveys-grid" id="pending-grid"></div>
+            </section>
+
+            <section id="active-surveys" class="survey-section">
+                <h2>Aktive Umfragen</h2>
+                <div class="surveys-grid" id="active-grid"></div>
+            </section>
+
+            <section id="completed-surveys" class="survey-section">
+                <h2>Abgeschlossene Umfragen</h2>
+                <div class="surveys-grid" id="completed-grid"></div>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../assets/js/admin.js"></script>
+</body>
+</html>

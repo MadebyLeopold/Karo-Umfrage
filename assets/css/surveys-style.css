@@ -1,0 +1,1334 @@
+/* Root Variables */
+:root {
+    --primary-color: #007AFF;
+    --secondary-color: #5856D6;
+    --danger-color: #FF3B30;
+    --success-color: #34C759;
+    --warning-color: #FFCC00;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Theme Variables */
+[data-theme="dark"] {
+    --bg-color: #1C1C1E;
+    --text-color: #F2F2F7;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --card-bg: #2C2C2E;
+    --nav-bg: rgba(28, 28, 30, 0.8);
+    --input-bg: rgba(255, 255, 255, 0);
+    --input-border: rgba(255, 255, 255, 0.1);
+    --input-text: #F2F2F7;
+    --input-label: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="light"] {
+    --bg-color: #F2F2F7;
+    --text-color: #1C1C1E;
+    --text-secondary: rgba(0, 0, 0, 0.7);
+    --card-bg: #FFFFFF;
+    --nav-bg: rgba(242, 242, 247, 0.8);
+    --input-bg: #FFFFFF;
+    --input-border: rgba(0, 0, 0, 0.1);
+    --input-text: #1C1C1E;
+    --input-label: rgba(0, 0, 0, 0.6);
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: var(--transition);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--input-border);
+}
+
+/* User Info and Buttons */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Logout Button */
+.logout-btn {
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 59, 48, 0.2);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 2px solid var(--input-border);
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: var(--primary-color);
+}
+
+.theme-toggle-btn i {
+    color: #FDB813;
+    transition: transform 0.3s ease;
+}
+
+/* Remove or comment out any ::before pseudo-elements */
+/* 
+.theme-toggle-btn::before,
+[data-theme="dark"] .theme-toggle-btn::before,
+[data-theme="light"] .theme-toggle-btn::before {
+    content: none;
+}
+*/
+
+/* Survey Sections */
+.surveys-section {
+    margin-bottom: 3rem;
+}
+
+.surveys-section h2 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.surveys-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, calc(33.333% - 1rem)));
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    align-items: start; /* Align cards to the top */
+    max-width: 100%;
+}
+
+/* Add sorting for minimized cards */
+#surveys-container,
+#completed-surveys-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, calc(33.333% - 1rem)));
+    gap: 1.5rem;
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* Add a new container for minimized cards */
+.minimized-surveys-container {
+    display: none; /* Hide by default */
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.minimized-surveys-container:not(:empty) {
+    display: flex; /* Show when not empty */
+}
+
+/* Survey Card - Enhanced styling */
+.survey-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--input-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.survey-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.survey-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.survey-description {
+    color: var(--text-color)    !important; /* Changed from var(--text-secondary) to improve contrast */
+    font-size: 1.1rem; /* Increased from 1rem */
+    line-height: 1.6;
+    margin: 1.2rem 0 1.8rem 0; /* Increased margins */
+    flex-grow: 1;
+    padding: 1rem; /* Added padding */
+    background: var(--input-bg); /* Added subtle background */
+    border-radius: 12px; /* Added rounded corners */
+    border: 1px solid var(--input-border); /* Added subtle border */
+}
+
+/* Enhanced Vote Buttons */
+.vote-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--input-border);
+}
+
+.vote-btn {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.vote-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.vote-btn:hover::before {
+    transform: translateY(0);
+}
+
+.vote-yes {
+    background: linear-gradient(135deg, var(--success-color), #2ECC71);
+    color: white;
+}
+
+.vote-no {
+    background: linear-gradient(135deg, var(--danger-color), #E74C3C);
+    color: white;
+}
+
+.vote-btn:hover {
+    transform: translateY(-2px);
+}
+
+.vote-yes:hover {
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+.vote-no:hover {
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.vote-btn i {
+    font-size: 1.1rem;
+}
+
+/* Vote button icons */
+.vote-yes i::before {
+    content: "\f164"; /* thumbs-up icon */
+}
+
+.vote-no i::before {
+    content: "\f165"; /* thumbs-down icon */
+}
+
+/* Survey Meta Information */
+.survey-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: var (--text-secondary);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.meta-item i {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .vote-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .survey-card {
+        padding: 1.2rem;
+    }
+
+    .survey-title {
+        font-size: 1.2rem;
+    }
+
+    .survey-description {
+        font-size: 1rem;
+        padding: 0.8rem;
+        margin: 1rem 0 1.5rem 0;
+    }
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px; /* Add space between title and minimize button */
+    margin: 0; /* Remove margin when minimized */
+}
+
+/* Title in Header */
+.card-header h3 {
+    margin: 0; /* Remove default margin */
+}
+
+.minimize-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    /* Add these to ensure proper click area */
+    width: 32px;
+    height: 32px;
+    margin: -4px;
+    position: relative;
+    z-index: 2;
+}
+
+.minimize-btn:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+/* Minimized State */
+.survey-card.minimized {
+    background: var(--card-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+    width: auto;
+    min-width: 200px;
+    max-width: 300px;
+    padding: 0.8rem 1rem;
+    margin: 0;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.survey-card.minimized:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.survey-card.minimized .card-header {
+    margin: 0; /* Remove margin */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    gap: 0.8rem;
+    padding: 0;
+}
+
+.survey-card.minimized h3 {
+    margin: 0; /* Remove margin from title */
+    font-size: 1em; /* Optionally reduce font size */
+    font-size: 0.9em;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.survey-card.minimized .card-content {
+    display: none;
+}
+
+.survey-card .card-content {
+    margin-top: 15px; /* Add space between header and content */
+    transition: all 0.3s ease;
+}
+
+.minimize-icon {
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Voting Buttons */
+.vote-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.vote-btn {
+    flex: 1;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.vote-yes {
+    background: var(--success-color);
+    color: white;
+}
+
+.vote-no {
+    background: var(--danger-color);
+    color: white;
+}
+
+.vote-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Results Display */
+.results-container {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--input-border);
+}
+
+.result-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.result-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.result-bar {
+    width: 100%;
+    height: 2.5rem;
+    background: var(--input-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.yes-bar, .no-bar {
+    height: 100%;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.yes-bar {
+    background: linear-gradient(45deg, var(--success-color), #32CD32);
+}
+
+.no-bar {
+    background: linear-gradient(45deg, var(--danger-color), #FF4500);
+}
+
+/* Message Container */
+.message-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.message {
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    color: white;
+    animation: slideIn 0.3s ease-out;
+}
+
+.message.success {
+    background: var(--success-color);
+}
+
+.message.error {
+    background: var(--danger-color);
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal base styles */
+.modal-content {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px; /* Increased from 600px to accommodate larger chart */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* Remove max-height and overflow-y to prevent scrolling */
+    color: var(--text-color);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;  /* Increased from 600px to accommodate larger chart */
+    max-height: 80vh;  /* Reduced from 90vh */
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+/* Ensure proper spacing around title */
+.modal h2 {
+    margin: 0 0 1rem 0;
+}
+
+.close-btn {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+.chart-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Chart controls spacing */
+.chart-controls {
+    margin: 0.5rem 0 1rem 0;
+}
+
+.chart-type-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background: var(--input-border);
+    color: var (--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    background: var(--bg-secondary);
+    color: var(--text-color);
+}
+
+.chart-type-btn:hover,
+.chart-type-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Chart container adjustments */
+.chart-container {
+    position: relative;
+    height: calc(min(65vh, 400px)); /* Increased from 50vh, 300px */
+    width: 100%;
+    padding: 15px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-top: 15px;
+    box-sizing: border-box;
+}
+
+canvas#resultsChart {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: calc(min(65vh, 400px)) !important; /* Increased from 50vh, 300px */
+}
+
+.chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-top: 20px;
+    position: relative;
+    height: 300px;    /* Reduced from 400px */
+    width: 100%;
+    padding: 15px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+canvas#resultsChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Add to existing styles */
+.survey-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.vote-btn,
+.chart-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.vote-btn {
+    flex: 1;
+}
+
+.vote-btn.yes {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.vote-btn.no {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.chart-btn {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.chart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+}
+
+.chart-icon {
+    font-size: 1.2em;
+}
+
+.survey-results {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--input-border);
+}
+
+.vote-counts {
+    display: flex;
+    justify-content: space-around;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+.vote-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.vote-count.yes i {
+    color: var(--success-color);
+}
+
+.vote-count.no i {
+    color: var(--danger-color);
+}
+
+.chart-btn {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.chart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+}
+
+.chart-icon {
+    font-size: 1.2em;
+}
+
+.completed-section .survey-card {
+    border: 1px solid var(--input-border);
+    background: var(--card-bg);
+}
+
+.completed .survey-actions {
+    border-top: 1px solid var(--input-border);
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.results-summary {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--input-border);
+}
+
+.vote-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--input-border);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+}
+
+.chart-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    color: var(--danger-color);
+    text-align: center;
+    padding: 2rem;
+}
+
+.error-icon {
+    width: 48px;
+    height: 48px;
+    fill: currentColor;
+    margin-bottom: 1rem;
+}
+
+.retry-btn {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.retry-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .surveys-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .vote-buttons {
+        flex-direction: column;
+    }
+    
+    .survey-card {
+        padding: 1.5rem;
+    }
+    
+    .survey-title {
+        font-size: 1.3rem;
+    }
+}
+
+.survey-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.creator-type,
+.created-date,
+.completed-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.created-date::before {
+    content: "\f073"; /* calendar icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--text-secondary);
+}
+
+.completed-date::before {
+    content: "\f00c"; /* check icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--success-color);
+}
+
+.creator-type::before {
+    content: "\f007"; /* user icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--text-secondary);
+}
+
+.created-date::before,
+.completed-date::before,
+.creator-type::before {
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    width: 1.2rem;
+    margin-right: 0.3rem;
+    text-align: center;
+}
+
+.date-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.8;
+}
+
+.date-info.completed {
+    color: var(--success-color);
+    opacity: 1;
+}
+
+.date-info i {
+    font-size: 1.1em;
+}
+
+.date-info.completed {
+    color: var(--success-color);
+}
+
+.minimized-section {
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+    #surveys-container,
+    #completed-surveys-container {
+        grid-template-columns: repeat(auto-fit, minmax(300px, calc(50% - 1rem)));
+    }
+}
+
+@media (max-width: 768px) {
+    #surveys-container,
+    #completed-surveys-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-info {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .logout-btn {
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Container for minimized cards */
+.minimized-container {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.minimized-surveys-container {
+    display: none; /* Hide by default */
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    align-items: center;
+    min-height: 50px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+.minimized-surveys-container:not(:empty) {
+    display: flex; /* Show when not empty */
+}
+
+/* Hide empty minimized containers */
+.minimized-container:empty,
+.minimized-surveys-container:empty {
+    display: none;
+}
+
+/* Normal cards grid */
+.surveys-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, calc(33.333% - 1rem)));
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* Dark mode adjustments */
+.dark-mode .minimized-container {
+    border-color: var(--dark-border);
+}
+
+/* Responsive adjustments */
+@media (max-height: 700px) {
+    .chart-container {
+        height: calc(min(70vh, 350px)); /* Increased from 60vh, 250px */
+    }
+    
+    canvas#resultsChart {
+        max-height: calc(min(70vh, 350px)) !important; /* Increased from 60vh, 250px */
+    }
+}
+
+@media (max-height: 500px) {
+    .chart-container {
+        height: calc(min(80vh, 300px)); /* Increased from 70vh, 200px */
+    }
+    
+    canvas#resultsChart {
+        max-height: calc(min(80vh, 300px)) !important; /* Increased from 70vh, 200px */
+    }
+}
+
+/* Modal padding adjustments */
+.modal-content {
+    padding: 1rem 1.5rem;
+}
+
+.theme-toggle-btn:hover::before {
+    transform: scale(1.1);
+}
+
+/* Completed Survey Card Styling */
+.completed-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--input-border);
+}
+
+.completed-section h2 {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.completed-section h2::before {
+    content: '\f058';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--success-color);
+    font-size: 1.4rem;
+}
+
+.survey-card.completed {
+    background: linear-gradient(145deg, var(--card-bg), var(--bg-color));
+    border: 1px solid var(--input-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.survey-card.completed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 3rem 3rem 0;
+    border-color: transparent var(--success-color) transparent transparent;
+    opacity: 0.2;
+}
+
+.survey-card.completed .completion-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--success-color);
+    font-size: 0.9rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: rgba(52, 199, 89, 0.1);
+    border-radius: 8px;
+}
+
+.survey-card.completed .results-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--input-border);
+}
+
+/* Enhanced Results Display */
+.vote-results {
+    background: var(--bg-color);
+    padding: 1.2rem;
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+
+.result-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.result-bar-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.bar-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.total-votes {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Chart Button Styling */
+.chart-btn {
+    background: linear-gradient(135deg, var(--primary-color), #0056b3);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chart-btn i {
+    font-size: 1.2rem;
+}
+
+/* Result Bars Animation */
+.yes-bar, .no-bar {
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.yes-bar::after, .no-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.minimize-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    /* Add these to ensure proper click area */
+    width: 32px;
+    height: 32px;
+    margin: -4px;
+    position: relative;
+    z-index: 2;
+}
+
+.minimize-btn:hover {
+    background-color: rgba(var(--text-color-rgb), 0.1);
+}
+
+.minimize-btn i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+/* Hide empty minimized container */
+.minimized-surveys-container:empty {
+    display: none;
+}

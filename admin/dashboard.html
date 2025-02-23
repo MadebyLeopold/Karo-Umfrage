@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de" class="dark-mode" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Schul-Umfragen</title>
+    <link rel="stylesheet" href="../../assets/css/admin-style.css">
+    <link rel="stylesheet" href="../../assets/css/surveys-style.css">
+    <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="admin-logs.html">Logs</a>
+                <div class="header-controls">
+                    <button onclick="toggleDarkMode()" class="theme-toggle-btn" aria-label="Theme umschalten">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button onclick="logout()" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Ausloggen
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <main id="mainContent">
+            <!-- Message Container for notifications -->
+            <div id="messageContainer"></div>
+            
+            <!-- Stats Dashboard -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <h3>Aktive Umfragen</h3>
+                    <p id="active-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Ausstehende Umfragen</h3>
+                    <p id="pending-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Abgeschlossene Umfragen</h3>
+                    <p id="completed-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Gesamte Abstimmungen</h3>
+                    <p id="total-votes">0</p>
+                </div>
+            </div>
+
+            <!-- Create Survey Button Section -->
+            <div class="action-bar">
+                <button id="createSurveyBtn" class="primary-btn">Neue Umfrage erstellen</button>
+            </div>
+
+            <!-- Surveys Section -->
+            <div class="surveys-section">
+                <div class="section-header">
+                    <h2>Alle Umfragen</h2>
+                    <div class="filters">
+                        <select id="statusFilter" class="select-filter">
+                            <option value="all">Alle Status</option>
+                            <option value="pending">Ausstehend</option>
+                            <option value="active">Aktiv</option>
+                            <option value="completed">Abgeschlossen</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="surveysGrid" class="surveys-grid">
+                    <!-- Surveys will be populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Modal für neue Umfrage -->
+            <div id="createSurveyModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Neue Umfrage erstellen</h2>
+                    <form id="createSurveyForm">
+                        <div class="form-group">
+                            <label for="surveyTitle">Titel</label>
+                            <input type="text" id="surveyTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="surveyDescription">Beschreibung</label>
+                            <textarea id="surveyDescription" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit">Erstellen</button>
+                            <button type="button" class="cancel-btn">Abbrechen</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add dark-mode.js before other scripts -->
+    <script src="../../assets/js/dark-mode.js"></script>
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/admin.js"></script>
+    <script src="../../assets/js/survey-manager.js"></script>
+</body>
+</html>

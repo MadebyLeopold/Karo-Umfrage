@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de" class="dark-mode" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karo-Umfragen</title>
+    <link rel="stylesheet" href="/assets/css/surveys-style.css">
+    <link rel="stylesheet" href="/assets/css/dark-mode.css">
+    <link rel="stylesheet" href="/assets/css/survey-submit.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/white-karo-icon.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Karo-Umfragen</h1>
+            <div class="user-info">
+                <span id="userTypeDisplay"></span>
+                <button onclick="logout()" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Ausloggen
+                </button>
+                <button onclick="toggleDarkMode()" class="theme-toggle-btn" aria-label="Theme umschalten">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <div id="messageContainer" class="message-container"></div>
+            
+            <!-- Active Surveys Section -->
+            <section class="surveys-section">
+                <div class="section-header">
+                    <h2>Aktuelle Umfragen</h2>
+                    <button id="submitSurveyBtn" class="submit-btn">
+                        <i class="fas fa-plus"></i> Umfrage einreichen
+                    </button>
+                </div>
+                <!-- Minimized active surveys -->
+                <div class="minimized-container">
+                    <div id="minimized-active-surveys" class="minimized-surveys-container"></div>
+                </div>
+                <!-- Normal active surveys -->
+                <div id="surveys-container" class="surveys-grid">
+                    <!-- Active surveys will be loaded dynamically -->
+                </div>
+            </section>
+            
+            <!-- Completed Surveys Section -->
+            <section class="surveys-section completed-section">
+                <h2>Abgeschlossene Umfragen</h2>
+                <div id="minimized-surveys" class="minimized-surveys-container"></div>
+                <div id="completed-surveys-container" class="surveys-grid"></div>
+            </section>
+        </main>
+    </div>
+    <div id="chartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Umfrage Ergebnisse</h2>
+            <div class="chart-controls">
+                <button class="chart-type-btn active" data-type="pie">Tortendiagramm</button>
+                <button class="chart-type-btn" data-type="bar">Balkendiagramm</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="resultsChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div id="submitSurveyModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Umfrage einreichen</h2>
+        <form id="submitSurveyForm">
+            <div class="form-group">
+                <label for="surveyTitle">Titel</label>
+                <input 
+                    type="text" 
+                    id="surveyTitle" 
+                    required 
+                    placeholder="Geben Sie einen Titel für die Umfrage ein"
+                >
+            </div>
+            <div class="form-group">
+                <label for="surveyDescription">Beschreibung</label>
+                <textarea 
+                    id="surveyDescription" 
+                    required 
+                    placeholder="Beschreiben Sie Ihre Ja/Nein-Frage"
+                ></textarea>
+            </div>
+            <input type="hidden" id="surveyType" value="yes-no">
+            <div class="form-actions">
+                <button type="button" class="cancel-btn">Abbrechen</button>
+                <button type="submit">Einreichen</button>
+            </div>
+        </form>
+    </div>
+</div>
+    <script src="/assets/js/chart-handler.js"></script>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/logout.js"></script>
+    <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/survey-handler.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/dark-mode.js"></script>
+    <script src="/assets/js/teacher-survey.js"></script>
+</body>
+</html>
