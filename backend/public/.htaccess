@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /backend/public/
+
+# Allow direct access to existing files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route all other requests to index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
