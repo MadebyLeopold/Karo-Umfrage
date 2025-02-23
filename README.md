@@ -80,7 +80,7 @@ Ein modernes Webanwendungssystem zur Verwaltung und Durchführung von Umfragen i
 
 ## 📜 Lizenz
 
-Dieses Projekt ist unter der **MIT-Lizenz** lizenziert – siehe die Datei `LICENSE` für Details.
+Dieses Projekt ist unter der **Apache-2.0** lizenziert – siehe die Datei `LICENSE` für Details.
 
 ---
 
