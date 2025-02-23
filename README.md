@@ -58,7 +58,7 @@ Ein modernes Webanwendungssystem zur Verwaltung und Durchführung von Umfragen i
 1️⃣ **Repository klonen**
 
 ```bash
- git clone https://github.com/dein-repo-url.git
+ git clone https://github.com/MadebyLeopold/Karo-Umfrage.git
 ```
 
 2️⃣ **PHP-Server einrichten**
