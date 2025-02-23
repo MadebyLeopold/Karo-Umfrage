@@ -76,6 +76,7 @@ Ein modernes Webanwendungssystem zur Verwaltung und Durchführung von Umfragen i
 
 - Öffne `index.html` im Browser
 
+- Passwörter: test123
 ---
 
 ## 📜 Lizenz
