@@ -78,6 +78,12 @@ Ein modernes Webanwendungssystem zur Verwaltung und Durchführung von Umfragen i
 
 ---
 
+## 🌍 Live-Demo
+
+Schau dir die Live-Demo hier an: [Live-Demo](https://umfrage.madebyleopold.me/login.html)
+
+---
+
 ## 📜 Lizenz
 
 Dieses Projekt ist unter der **Apache-2.0** lizenziert – siehe die Datei `LICENSE` für Details.
