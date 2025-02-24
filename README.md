@@ -83,7 +83,4 @@ Ein modernes Webanwendungssystem zur Verwaltung und Durchführung von Umfragen i
 
 Dieses Projekt ist unter der **Apache-2.0** lizenziert – siehe die Datei `LICENSE` für Details.
 
----
-
-💡 *Happy Coding!* 🎉
 
